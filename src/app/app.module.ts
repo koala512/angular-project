@@ -5,7 +5,6 @@ import localeFr from '@angular/common/locales/fr';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { SearchComponent } from './search/search.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { registerLocaleData } from '@angular/common';
 import { SortByDatePipe } from './pipes/sortByDatepipe'
@@ -20,7 +19,6 @@ registerLocaleData(localeFr);
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    SearchComponent,
     ProductCardComponent,
     SortByDatePipe,
     SortByNamePipe,

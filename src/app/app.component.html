@@ -1,7 +1,8 @@
 <app-header></app-header>
-<div>
-  Chercher : <input type="text" id="search" name="search" [(ngModel)]="search"/> <br>
-  Trier par : <select [(ngModel)]="order" >
+<div class="filter">
+
+ <input placeholder="rechercher" type="text" id="search" name="search" [(ngModel)]="search"/> <br>
+<select [(ngModel)]="order" >
     <option value="asc">plus récent</option>
     <option value="dsc">plus vieux</option>
     <option value="A-Z">A-Z</option>
@@ -9,13 +10,14 @@
   </select>
 </div>
 <div class="products">
-  <div *ngIf="order === 'asc' ||order === 'dsc'">
+  <div class="figurine" *ngIf="order === 'asc' ||order === 'dsc'">
     <app-product-card *ngFor="let product of (products | sortByDate:order | filterByName:search)" [myProduct]="product"></app-product-card>
   </div>
-  <div *ngIf="order === 'A-Z' ||order === 'Z-A'">
+  <div class="figurine" *ngIf="order === 'A-Z' ||order === 'Z-A'">
     <app-product-card *ngFor="let product of (products | sortByName:order | filterByName:search)" [myProduct]="product"></app-product-card>
   </div>
-  <div *ngIf="order === '' ">
+  <div class="figurine" *ngIf="order === '' ">
     <app-product-card *ngFor="let product of (products | filterByName:search)" [myProduct]="product"></app-product-card>
+  </div>
   </div>
 <app-footer></app-footer>
