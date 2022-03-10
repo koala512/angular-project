@@ -11,6 +11,11 @@ import { SortByDatePipe } from './pipes/sortByDatepipe'
 import { FilterByNamePipe } from './pipes/filterByName.pipe';
 import { FormsModule } from '@angular/forms';
 import { SortByNamePipe } from './pipes/sortByNamepipe';
+import { ProductsListComponent } from './products-list/products-list.component';
+import { AppRoutingModule } from 'src/app-routing/app-routing.module';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { AboutComponent } from './about/about.component';
+
 
 registerLocaleData(localeFr);
 
@@ -23,10 +28,14 @@ registerLocaleData(localeFr);
     SortByDatePipe,
     SortByNamePipe,
     FilterByNamePipe,
+    ProductsListComponent,
+    ProductDetailComponent,
+    AboutComponent,
 
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule
   ],
   providers: [{

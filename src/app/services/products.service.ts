@@ -108,6 +108,9 @@ export class ProductsService {
     getAllProducts():Product[] { 
       return this.products
     }
+    getOneProduct(id: number): Product|undefined {
+      return this.products.find((p)=> p.id === id)
+    }
     onFavoriteProduct(product:Product): void {
       if(product.isFavorite) {
           product.favorite--;
