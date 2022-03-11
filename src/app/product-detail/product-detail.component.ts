@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,7 +11,7 @@ import { ProductsService } from '../services/products.service';
 })
 export class ProductDetailComponent implements OnInit {
 
- myProduct!: Product;
+ myProductObservable!: Observable<any>;
  id!: number;
 
 
@@ -21,8 +22,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    let product = this.productsService.getOneProduct(this.id);
-    if(product){ this.myProduct = product}
+    this.myProductObservable = this.productsService.getOneProduct(this.id);
+    
   }
 }
 

@@ -10,10 +10,14 @@ import { ProductsService } from '../services/products.service';
 export class ProductCardComponent {
 
   @Input() myProduct!: Product;
+  @Input() displayLink!: boolean;
 
   constructor(private productsService: ProductsService) { }
 
   onFavorite() {
-    this.productsService.onFavoriteProduct(this.myProduct)
+    this.productsService.onFavoriteProduct(this.myProduct).subscribe((p:Product) => {
+      console.log(p)
+      this.myProduct = p
+    });
   }
 }

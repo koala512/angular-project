@@ -15,6 +15,7 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { AppRoutingModule } from 'src/app-routing/app-routing.module';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { AboutComponent } from './about/about.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 registerLocaleData(localeFr);
@@ -36,7 +37,8 @@ registerLocaleData(localeFr);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [{
     provide: LOCALE_ID,
