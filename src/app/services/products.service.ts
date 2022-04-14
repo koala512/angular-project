@@ -13,13 +13,12 @@ export class ProductsService {
 
     
     getAllProducts(): Observable<Product[]> { 
-      return <Observable<Product[]>>this.http.get('http://localhost:3000/products')
+      return <Observable<Product[]>>this.http.get('http://localhost:4200/products')
     }
     getOneProduct(id: number) {
-      return <Observable<Product>>this.http.get(`http://localhost:3000/products/${id}`)
+      return <Observable<Product>>this.http.get(`http://localhost:4200/products/${id}`)
     }
     onFavoriteProduct(product: Product): Observable<Product>{
-      return <Observable<Product>>this.http.put(`http://localhost:3000/products/${product.id}/favorite`,{})
-    }
-   
+      return <Observable<Product>>this.http.put(`http://localhost:4200/products/${product.id}/favorite`,{})
+    }  
 }
