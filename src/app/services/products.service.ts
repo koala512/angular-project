@@ -115,7 +115,7 @@ export class ProductsService {
         ['s','m','l']
       ),
     ];
-    getAllProducts():Product[] { 
+    getAllProducts():Product[] {
       return this.products
     }
     getOneProduct(id: number): Product|undefined {
