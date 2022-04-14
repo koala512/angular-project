@@ -105,7 +105,7 @@ export class ProductsService {
         false
       ),
     ];
-    getAllProducts():Product[] { 
+    getAllProducts():Product[] {
       return this.products
     }
     getOneProduct(id: number): Product|undefined {

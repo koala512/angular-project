@@ -10,12 +10,12 @@
    </div>
    <div class="products">
      <div class="figurine" *ngIf="order === 'asc' ||order === 'dsc'">
-       <app-product-card *ngFor="let product of (products | sortByDate:order | filterByName:search)" [myProduct]="product" [routerLink]="['product',product.id]"></app-product-card>
+       <app-product-card *ngFor="let product of (products | sortByDate:order | filterByName:search)" [myProduct]="product" [displayLink]="true"></app-product-card>
      </div>
      <div class="figurine" *ngIf="order === 'A-Z' ||order === 'Z-A'">
-       <app-product-card *ngFor="let product of (products | sortByName:order | filterByName:search)" [myProduct]="product" [routerLink]="['product',product.id]"></app-product-card>
+       <app-product-card *ngFor="let product of (products | sortByName:order | filterByName:search)" [myProduct]="product" [displayLink]="true"></app-product-card>
      </div>
      <div class="figurine" *ngIf="order === '' ">
-       <app-product-card *ngFor="let product of (products | filterByName:search)" [myProduct]="product" [routerLink]="['product',product.id]"></app-product-card>
+       <app-product-card *ngFor="let product of (products | filterByName:search)" [myProduct]="product" [displayLink]="true"></app-product-card>
      </div>
      </div>

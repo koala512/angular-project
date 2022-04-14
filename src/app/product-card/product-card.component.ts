@@ -10,6 +10,7 @@ import { ProductsService } from '../services/products.service';
 export class ProductCardComponent {
 
   @Input() myProduct!: Product;
+  @Input() displayLink!: boolean;
 
   constructor(private productsService: ProductsService) { }
 
