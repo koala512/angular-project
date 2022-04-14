@@ -4,10 +4,11 @@ export class Product{
         public title: string, 
         public description: string,
         public imageUrl: string,
-        public price: number,
+        public price: number[],
         public date : Date,
         public favorite : number,
-        public isFavorite : boolean
+        public isFavorite : boolean,
+        public size : string[]
     )
     {}
 }
