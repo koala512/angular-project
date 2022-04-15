@@ -129,11 +129,10 @@ app.get('/products', (req, res)=> {
   res.set('Access-Control-Allow-Origin','*');
   res.json(products)
 });
+
 app.get('/products/:id', (req, res)=> {
   const id = req.params.id;
   res.set('Access-Control-Allow-Origin','*');
   res.json(products.find((p) => p.id == id))
 });
-app.listen(port, () =>{
-  console.log(`Application exemple a l'écoute sur sur le port ${port}!`)
-});
+
