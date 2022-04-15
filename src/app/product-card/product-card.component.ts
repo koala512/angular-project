@@ -11,19 +11,16 @@ export class ProductCardComponent {
 
   @Input() myProduct!: Product;
   @Input() displayLink!: boolean;
-  selected: variant | undefined;
-  multiplier: number | undefined;
 
-  constructor(private productsService: ProductsService) { }
+  selected: number=this.myProduct?.variants[0].price;
 
-  ngOnInit():void{this.selected=this.myProduct?.variants[0]}
+  constructor(private productsService: ProductsService){}
+
+  ngOnInit():void{
+    this.selected=this.myProduct?.variants[0].price;
+  }
 
   onFavorite() {
     this.productsService.onFavoriteProduct(this.myProduct)
   }
-
-  onSelected() {
-    
-  }
-
 }
