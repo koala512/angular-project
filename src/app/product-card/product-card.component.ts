@@ -19,11 +19,13 @@ export class ProductCardComponent {
   ngOnInit():void{this.selected=this.myProduct?.variants[0]}
 
   onFavorite() {
-    this.productsService.onFavoriteProduct(this.myProduct)
+    this.productsService.onFavoriteProduct(this.myProduct).subscribe((p:Product) => {
+      this.myProduct = p
+    });
   }
 
   onSelected() {
-    
+
   }
 
 }
