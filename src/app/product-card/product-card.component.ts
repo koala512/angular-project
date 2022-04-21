@@ -21,7 +21,9 @@ export class ProductCardComponent {
   }
 
   onFavorite() {
-    this.productsService.onFavoriteProduct(this.myProduct)
+    this.productsService.onFavoriteProduct(this.myProduct).subscribe((p:Product) => {
+      this.myProduct = p
+    });
   }
   addToCart() {
     this.productsService.onAddProduct(this.myProduct, this.selected);
