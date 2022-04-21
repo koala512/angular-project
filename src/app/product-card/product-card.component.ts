@@ -23,4 +23,7 @@ export class ProductCardComponent {
   onFavorite() {
     this.productsService.onFavoriteProduct(this.myProduct)
   }
+  addToCart() {
+    this.productsService.onAddProduct(this.myProduct, this.selected);
+  }
 }

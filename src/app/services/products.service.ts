@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product }   from '../models/product.model';
+import { Product, variant, Basket }   from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -106,6 +106,9 @@ export class ProductsService {
         false
       ),
     ];
+
+    basket:Basket=[];
+
     getAllProducts():Product[] {
       return this.products
     }
@@ -119,5 +122,17 @@ export class ProductsService {
           product.favorite++;
         }
         product.isFavorite = !product.isFavorite;
+    }
+    onAddProduct(product:Product, price:number): void {
+
+      //insert into basket product and price
+      let basketProduct:Basket = {
+        product: product,
+        price: price,
+      }
+
+
+      console.log(basketProduct, "product");
+
     }
 }
