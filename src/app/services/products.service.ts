@@ -7,18 +7,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 
+export class ProductsService {
 
-    // basket:Basket=[];
-
-    // onAddProduct(product:Product, price:number): void {
-
-    //   //insert into basket product and price
-    //   let basketProduct:Basket = {
-    //     product: product,
-    //     price: price,
-    //   }
-
-    // }
+  cartItems= [];
+  cartTotal= 0;
   constructor(private http: HttpClient) {}
 
   getAllProducts(): Observable<Product[]> {
@@ -31,7 +23,12 @@ import { HttpClient } from '@angular/common/http';
     return <Observable<Product>>this.http.put(`http://localhost:3000/products/${product.id}/favorite`,{})
   }
   onAddProduct(product: Product, price: number): Observable<Product>{
-    return <Observable<Product>>this.http.put(`http://localhost:3000/products/${product.id}/addToCart`,{
-      price: price
-    })
+    return <Observable<Product>>this.http.post(`http://localhost:3000/products`, {product, price})
   }
+  onDeleteProduct(product: Product): Observable<Product>{
+    return <Observable<Product>>this.http.delete(`http://localhost:3000/products/${product.id}`)
+  }
+  onDeleteAllProducts(): Observable<Product[]>{
+    return <Observable<Product[]>>this.http.delete(`http://localhost:3000/products`)
+  }
+}
