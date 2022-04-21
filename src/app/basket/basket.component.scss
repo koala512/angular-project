@@ -44,3 +44,14 @@
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
   }
+  .trash-basket-btn{
+    background: #f1f1f1;
+    cursor: pointer;
+    border: none;
+    width: 50px;
+    height: 50px;
+  }
+  .trash-basket{
+    width: 50px;
+    height: 50px;
+  }
