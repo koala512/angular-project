@@ -6,7 +6,7 @@ var cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Application exemple à l'écoute sur le port ${port}!`));
 
 const products =[
   {
@@ -111,6 +111,7 @@ const products =[
   },
 ];
 
+
 app.put('/products/:id/favorite',(req, res) => {
   const id = req.params.id;
   let product = products.find((p) => p.id == id);
@@ -136,3 +137,35 @@ app.get('/products/:id', (req, res)=> {
   res.json(products.find((p) => p.id == id))
 });
 
+const cart = [];
+
+const find = (idToFind) => {
+  return cart.find(({ id }) => idToFind === id);
+};
+
+const insert = (cartItemToInsert) => {
+  cart.push(cartItemToInsert);
+};
+
+const clear = () => {
+  cart.splice(0, cart.length);
+};
+
+app.get("/cart", (req, res) => {
+  res.set("Acces-Control-Allow-Origin", "*");
+  res.json(cart);
+});
+
+app.delete("/cart/:id", (req, res) => {
+  const id = req.params.id;
+  const cartItemToDelete = find(id);
+  res.set("Acces-Control-Allow-Origin", "*");
+  cart.splice(cart.indexOf(cartItemToDelete), 1);
+  res.json(cart);
+});
+
+app.get("/cart/clear", (req, res) => {
+  clear();
+  res.set("Acces-Control-Allow-Origin", "*");
+  res.json(cart);
+});
