@@ -15,6 +15,7 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { AppRoutingModule } from 'src/app-routing/app-routing.module';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { AboutComponent } from './about/about.component';
+import { BasketComponent } from './basket/basket.component';
 
 
 registerLocaleData(localeFr);
@@ -31,6 +32,7 @@ registerLocaleData(localeFr);
     ProductsListComponent,
     ProductDetailComponent,
     AboutComponent,
+    BasketComponent,
 
   ],
   imports: [
