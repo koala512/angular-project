@@ -22,13 +22,16 @@ export class ProductsService {
   onFavoriteProduct(product: Product): Observable<Product>{
     return <Observable<Product>>this.http.put(`http://localhost:3000/products/${product.id}/favorite`,{})
   }
-  onAddProduct(product: Product, price: number): Observable<Product>{
-    return <Observable<Product>>this.http.post(`http://localhost:3000/products/cart`, {product, price})
+  getCartItems(): Observable<Basket[]>{
+    return <Observable<Basket[]>>this.http.get(`http://localhost:3000/cart`)
   }
-  onDeleteProduct(product: Product): Observable<Product>{
-    return <Observable<Product>>this.http.delete(`http://localhost:3000/products/cart/${product.id}`)
+  onAddProduct(product: Product, price: number): Observable<Basket>{
+    return <Observable<Basket>>this.http.post(`http://localhost:3000/cart`, {product, price})
   }
-  onDeleteAllProducts(): Observable<Product[]>{
-    return <Observable<Product[]>>this.http.delete(`http://localhost:3000/products/cart`)
+  onDeleteProduct(product: Product): Observable<Basket>{
+    return <Observable<Basket>>this.http.delete(`http://localhost:3000/cart/${product.id}`)
+  }
+  onDeleteAllProducts(): Observable<Basket[]>{
+    return <Observable<Basket[]>>this.http.delete(`http://localhost:3000/cart`)
   }
 }
