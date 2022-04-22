@@ -156,6 +156,15 @@ app.get("/cart", (req, res) => {
   res.json(cart);
 });
 
+app.put("/cart", (req, res) => {
+  const item = req.body;
+  if (!isValid( item.variant)) return;
+  const found = find(item.id);
+  found ? update(found) : insert(item);
+  res.set("Acces-Control-Allow-Origin", "*");
+  res.json(cart);
+});
+
 app.delete("/cart/:id", (req, res) => {
   const id = req.params.id;
   const cartItemToDelete = find(id);
