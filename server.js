@@ -111,6 +111,7 @@ const products =[
   },
 ];
 
+let cart = [];
 
 app.put('/products/:id/favorite',(req, res) => {
   const id = req.params.id;
@@ -137,14 +138,13 @@ app.get('/products/:id', (req, res)=> {
   res.json(products.find((p) => p.id == id))
 });
 
-const cart = [];
-
 const find = (idToFind) => {
   return cart.find(({ id }) => idToFind === id);
 };
 
-const insert = (cartItemToInsert) => {
-  cart.push(cartItemToInsert);
+const insert = (article) => {
+  cart.push(article);
+  console.log(cart,"caart");
 };
 
 const clear = () => {
@@ -158,9 +158,8 @@ app.get("/cart", (req, res) => {
 
 app.put("/cart", (req, res) => {
   const item = req.body;
-  if (!isValid( item.variant)) return;
-  const found = find(item.id);
-  found ? update(found) : insert(item);
+  console.log(item, "item");
+  insert(item);
   res.set("Acces-Control-Allow-Origin", "*");
   res.json(cart);
 });

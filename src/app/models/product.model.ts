@@ -1,7 +1,7 @@
 export type variant = { size: string; price: number };
 export class Product {
   constructor(
-    public id: number,
+    public id: string,
     public title: string,
     public description: string,
     public imageUrl: string,
