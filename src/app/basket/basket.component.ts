@@ -10,22 +10,30 @@ import { Router } from '@angular/router';
 })
 export class BasketComponent implements OnInit {
   articles: Article[]=[];
+  total : number= 0;
   constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
     this.cartService.getAllArticles().subscribe((c) => (this.articles = c));
   }
 
-  // itemCount() {
-  //   return this.productService.itemCount(this.articles);
-  // }
+  //function to delete an article from the cart
+  onDeleteProduct(article: Article): void {
+    this.cartService.onDeleteProduct(article).subscribe();
+    this.articles = this.articles.filter((a) => a.articleId !== article.articleId);
+  }
 
-  // total(): number {
-  //   return this.productService.total(this.articles);
-  // }
+  articlesCount() {
+    return this.cartService.articlesCount(this.articles);
+  }
 
-  // onDeleteProduct = ({ id }: Article) => {
-  //   this.productService.onDeleteProduct(id).subscribe((c) => (this.articles = c));
+  //total price of articles in the cart
+  totalPrice() {
+    return this.cartService.totalPrice(this.total, this.articles);
+  }
+
+  // onDeleteProduct = (articleId : Article) => {
+  //   this.cartService.onDeleteProduct(articleId).subscribe((c) => (this.articles = c));
   // };
 
   // updateItemQty = ({ newQty, item }: { newQty: number; item: Article }) => {
@@ -35,4 +43,7 @@ export class BasketComponent implements OnInit {
   order = () => {
     this.router.navigate(['/order']);
   };
+  home = () => {
+    this.router.navigate(['/']);
+  }
 }

@@ -1,4 +1,4 @@
-<button class="btn-order">commander</button>
+
 <div *ngFor="let article of articles">
 <div class="container-card">
   <div class="card">
@@ -6,13 +6,22 @@
       src={{article.imageUrl}}
       alt=""
       class="card-img-basket"
+      [routerLink]="['product',article.id]"
     />
     <h5 class="card-title-basket">{{article.title}}</h5>
-    <div class="variant-price-basket">{{article.price}}</div>
-    <button class="trash-basket-btn">supprimer</button>
+    <div class="variant-price-basket">{{article.price}} €</div>
+    <button class="trash-basket-btn" (click)="onDeleteProduct(article)">supprimer</button>
   </div>
 </div>
+
 </div>
-<div class="total-basket">prix total :</div>
-<button class="btn-order">commander</button>
+<div *ngIf="articlesCount() <= 0">
+<p class="empty">Votre panier est vide</p>
+<button class="empty-btn"  (click)="home()" >Voir les produits</button>
+</div>
+<div *ngIf="articlesCount() > 0">
+  <div class="total-basket">Prix total : {{totalPrice()}} € <br> Nombre d'articles : {{articlesCount()}} <br><button class="btn-order">commander</button></div>
+</div>
+
+
 

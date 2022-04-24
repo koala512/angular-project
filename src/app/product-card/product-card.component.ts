@@ -14,7 +14,7 @@ export class ProductCardComponent {
   @Input() myProduct!: Product;
   @Input() displayLink!: boolean;
 
-  selected: number=this.myProduct?.variants[0].price;
+  selected: string=this.myProduct?.variants[0].price;
 
   constructor(
     private productsService: ProductsService,
@@ -32,6 +32,6 @@ export class ProductCardComponent {
     });
   }
   addToCart() {
-    this.cartservice.onAddProduct(new Article(this.myProduct.id,this.myProduct.title,this.myProduct.imageUrl, this.selected));
+    this.cartservice.onAddProduct(new Article(this.myProduct.id,this.myProduct.title,this.myProduct.imageUrl, this.selected)).subscribe();
   }
 }

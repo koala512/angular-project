@@ -10,8 +10,6 @@ import { HttpClient } from '@angular/common/http';
 
 export class ProductsService {
 
-
-  cartTotal= 0;
   constructor(private http: HttpClient) {}
 
   getAllProducts(): Observable<Product[]> {
