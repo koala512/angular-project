@@ -12,13 +12,14 @@
 
   <nav>
       <a routerLink="" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}">home</a>
-      <a href="#">Produits</a>
-      <a href="#">Licences</a>
-      <a href="#">Espace fidélité</a>
+      <a routerLink="" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}">Produits</a>
+      <a routerLink="" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}">Licences</a>
+      <a routerLink="" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}">Espace fidélité</a>
       <a href="#">News</a>
+      <a href="/cart">Panier <span>({{articlesCount()}})</span></a>
       <a routerLink="about" routerActive="is-active">A propos</a>
       <a href="#">contact</a>
-  
+
   </nav>
 
   <img class="img-berserk" src="https://pbs.twimg.com/media/EnCmSADXYAE7tPs.jpg" alt="">

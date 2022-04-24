@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Product, variant } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
+import { CartService } from '../services/cart.service';
+import { Article } from '../models/article.model';
 
 @Component({
   selector: 'app-product-card',
@@ -12,9 +14,13 @@ export class ProductCardComponent {
   @Input() myProduct!: Product;
   @Input() displayLink!: boolean;
 
-  selected: number=this.myProduct?.variants[0].price;
+  selected: string=this.myProduct?.variants[0].price;
 
-  constructor(private productsService: ProductsService){}
+  constructor(
+    private productsService: ProductsService,
+    private cartservice: CartService
+  ) { }
+
 
   ngOnInit():void{
     this.selected=this.myProduct?.variants[0].price;
@@ -26,6 +32,6 @@ export class ProductCardComponent {
     });
   }
   addToCart() {
-    this.productsService.onAddProduct(this.myProduct, this.selected);
+    this.cartservice.onAddProduct(new Article(this.myProduct.id,this.myProduct.title,this.myProduct.imageUrl, this.selected)).subscribe();
   }
 }

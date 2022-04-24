@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Product, variant, Basket }   from '../models/product.model';
+import { Product, variant }   from '../models/product.model';
+import { Article } from '../models/article.model';
 import {Observable} from "rxjs";
 import { HttpClient } from '@angular/common/http';
 
@@ -9,8 +10,6 @@ import { HttpClient } from '@angular/common/http';
 
 export class ProductsService {
 
-  cartItems= [];
-  cartTotal= 0;
   constructor(private http: HttpClient) {}
 
   getAllProducts(): Observable<Product[]> {
@@ -21,17 +20,5 @@ export class ProductsService {
   }
   onFavoriteProduct(product: Product): Observable<Product>{
     return <Observable<Product>>this.http.put(`http://localhost:3000/products/${product.id}/favorite`,{})
-  }
-  getCartItems(): Observable<Basket[]>{
-    return <Observable<Basket[]>>this.http.get(`http://localhost:3000/cart`)
-  }
-  onAddProduct(product: Product, price: number): Observable<Basket>{
-    return <Observable<Basket>>this.http.post(`http://localhost:3000/cart`, {product, price})
-  }
-  onDeleteProduct(product: Product): Observable<Basket>{
-    return <Observable<Basket>>this.http.delete(`http://localhost:3000/cart/${product.id}`)
-  }
-  onDeleteAllProducts(): Observable<Basket[]>{
-    return <Observable<Basket[]>>this.http.delete(`http://localhost:3000/cart`)
   }
 }

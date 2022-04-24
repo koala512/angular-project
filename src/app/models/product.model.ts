@@ -1,7 +1,7 @@
-export type variant = { size: string; price: number };
+export type variant = { size: string; price: string };
 export class Product {
   constructor(
-    public id: number,
+    public id: string,
     public title: string,
     public description: string,
     public imageUrl: string,
@@ -14,6 +14,6 @@ export class Product {
 export class Basket {
   constructor(
     public product: Product,
-    public price: number
+    public price: string
   ) {};
 }
