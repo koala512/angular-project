@@ -1,4 +1,4 @@
-export type variant = { size: string; price: string };
+export type variant = { size: string, price: string };
 export class Product {
   constructor(
     public id: string,
