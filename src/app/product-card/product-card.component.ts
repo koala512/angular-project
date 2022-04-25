@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Product, variant } from '../models/product.model';
 import { ProductsService } from '../services/products.service';
+import { CartService } from '../services/cart.service';
+import { Article } from '../models/article.model';
 
 @Component({
   selector: 'app-product-card',
@@ -11,19 +13,25 @@ export class ProductCardComponent {
 
   @Input() myProduct!: Product;
   @Input() displayLink!: boolean;
-  selected: variant | undefined;
-  multiplier: number | undefined;
 
-  constructor(private productsService: ProductsService) { }
+  selected: string=this.myProduct?.variants[0].price;
 
-  ngOnInit():void{this.selected=this.myProduct?.variants[0]}
+  constructor(
+    private productsService: ProductsService,
+    private cartservice: CartService
+  ) { }
+
+
+  ngOnInit():void{
+    this.selected=this.myProduct?.variants[0].price;
+  }
 
   onFavorite() {
-    this.productsService.onFavoriteProduct(this.myProduct)
+    this.productsService.onFavoriteProduct(this.myProduct).subscribe((p:Product) => {
+      this.myProduct = p
+    });
   }
-
-  onSelected() {
-    
+  addToCart() {
+    this.cartservice.onAddProduct(new Article(this.myProduct.id,this.myProduct.title,this.myProduct.imageUrl, this.selected)).subscribe();
   }
-
 }
