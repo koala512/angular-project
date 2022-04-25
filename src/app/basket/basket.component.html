@@ -20,7 +20,7 @@
 <button class="empty-btn"  (click)="home()" >Voir les produits</button>
 </div>
 <div *ngIf="articlesCount() > 0">
-  <div class="total-basket">Prix total : {{totalPrice()}} € <br> Nombre d'articles : {{articlesCount()}} <br><button class="btn-order">commander</button></div>
+  <div class="total-basket">Prix total : {{totalPrice()}} € <br> Nombre d'articles : {{articlesCount()}} <br><button class="btn-order" (click)="order()">commander</button></div>
 </div>
 
 

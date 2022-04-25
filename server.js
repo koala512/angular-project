@@ -178,3 +178,15 @@ app.get("/cart/clear", (req, res) => {
   res.json(cart);
 });
 
+app.get("/orders", (req, res) => {
+  res.set("Acces-Control-Allow-Origin", "*");
+  res.json(orders);
+});
+
+app.put("/orders", (req, res) => {
+  const order = req.body;
+  orders.push(order);
+  res.set("Acces-Control-Allow-Origin", "*");
+  res.json(orders);
+});
+

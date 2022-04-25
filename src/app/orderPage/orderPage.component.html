@@ -1,0 +1,8 @@
+<div class="container">
+  <div *ngfor="let order of orders">
+
+      <p>Commande n°{{order.id}} | Total: {{order.total}} €</p>
+      <div *ngfor="let item of order.items">{{item.card.name}} - prix de l'article : {{item.card.variants[item.variant]}} € - qty: {{item.qty}}</div>
+
+  </div>
+</div>
