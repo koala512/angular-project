@@ -36,6 +36,7 @@ export class OrderComponent implements OnInit {
       this.cart,
       this.cartService.totalPrice(this.total, this.cart)
     );
+
     this.orderService.addOrder(order).subscribe();
     this.cartService.onDeleteAllProducts().subscribe((c) => (this.cart = c));
     this.router.navigate(['/orderPage']);
