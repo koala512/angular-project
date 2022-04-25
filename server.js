@@ -112,6 +112,7 @@ const products =[
 ];
 
 const cart = [];
+const orders = [];
 
 app.put('/products/:id/favorite',(req, res) => {
   const id = req.params.id;
@@ -144,7 +145,6 @@ const find = (idToFind) => {
 
 const addArticle = (article) => {
   cart.push(article);
-  console.log(cart,"cart content");
 };
 
 const clear = () => {
@@ -158,7 +158,6 @@ app.get("/cart", (req, res) => {
 
 app.put("/cart", (req, res) => {
   const article = req.body;
-  console.log(article, "req.body");
   addArticle(article);
   res.set("Acces-Control-Allow-Origin", "*");
   res.json(cart);
@@ -176,5 +175,18 @@ app.get("/cart/clear", (req, res) => {
   clear();
   res.set("Acces-Control-Allow-Origin", "*");
   res.json(cart);
+});
+
+app.get("/orders", (req, res) => {
+  res.set("Acces-Control-Allow-Origin", "*");
+  console.log(orders, "orders");
+  res.json(orders);
+});
+
+app.put("/orders", (req, res) => {
+  const order = req.body;
+  orders.push(order);
+  res.set("Acces-Control-Allow-Origin", "*");
+  res.json(orders);
 });
 

@@ -11,8 +11,9 @@ import { OrderService } from '../services/order.service';
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-  id: string;
-  cart: Article[];
+  id!: string;
+  cart!: Article[];
+  total: number=0;
 
   constructor(
     private orderService: OrderService,
@@ -22,21 +23,22 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = Date.now().toString();
-    this.cartService.getAllItems().subscribe((c) => (this.cart = c));
+    this.cartService.getAllArticles().subscribe((c) => (this.cart = c));
   }
 
-  total(): string {
-    return this.cartService.total(this.cart)?.toFixed(2);
+  totalPrice(): string {
+    return this.cartService.totalPrice(this.total,this.cart)?.toFixed(2);
   }
 
   confirm() {
     const order = new Order(
       this.id,
       this.cart,
-      this.cartService.total(this.cart)
+      this.cartService.totalPrice(this.total, this.cart)
     );
-    this.orderService.insertOrder(order).subscribe();
-    this.cartService.clear().subscribe((c) => (this.cart = c));
-    this.router.navigate(['/order-list']);
+
+    this.orderService.addOrder(order).subscribe();
+    this.cartService.onDeleteAllProducts().subscribe((c) => (this.cart = c));
+    this.router.navigate(['/orderPage']);
   }
 }

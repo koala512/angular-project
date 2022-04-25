@@ -17,6 +17,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { AboutComponent } from './about/about.component';
 import {HttpClientModule} from "@angular/common/http";
 import { BasketComponent } from './basket/basket.component';
+import { OrderComponent } from './order/order.component';
+import { OrderPageComponent } from './orderPage/orderPage.component';
 
 
 registerLocaleData(localeFr);
@@ -34,7 +36,8 @@ registerLocaleData(localeFr);
     ProductDetailComponent,
     AboutComponent,
     BasketComponent,
-
+    OrderComponent,
+    OrderPageComponent
   ],
   imports: [
     BrowserModule,

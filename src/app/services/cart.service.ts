@@ -15,7 +15,6 @@ export class CartService {
     return <Observable<Article[]>>this.http.get(`http://localhost:3000/cart`)
   }
   onAddProduct(article: Article): Observable<Article[]>{
-    console.log(article,'article');
     return <Observable<Article[]>>this.http.put(`http://localhost:3000/cart`, article)
   }
   getAllArticles(): Observable<Article[]> {
