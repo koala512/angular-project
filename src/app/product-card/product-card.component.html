@@ -18,7 +18,7 @@
       </div>
 
       <p class="price"> {{selected}} €</p>
-      <button type="button" class="add-basket-button" (click)="addToCart()">Ajouter au panier</button>
+      <button type="button" class="add-basket-button" (click)="addToCart()"><img class='logo-basket' src='https://cdn.pixabay.com/photo/2014/06/19/00/59/shopping-cart-371980_960_720.png'></button>
       <div><b [ngStyle]="{ color: myProduct.favorite > 0 ? 'green' : 'red' }">{{myProduct.favorite}} <svg
             xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star"
             viewBox="0 0 16 16">
