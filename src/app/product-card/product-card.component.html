@@ -8,12 +8,15 @@
         <h5 class="card-title">{{myProduct.title}}</h5>
         <p class="card-text">{{myProduct.description}}</p>
       </div>
-      <form>
-        <select name="selectSize" *ngIf="myProduct?.variants && myProduct.variants.length > 1 " [(ngModel)]="selected">
-          <option *ngFor="let variant of myProduct.variants" [value]="variant.price">{{variant.size}}</option>
-        </select>
+      <div class="size-text">
+        Choisissez une taille:
+          <form>
+           <select name="selectSize" *ngIf="myProduct?.variants && myProduct.variants.length > 1 " [(ngModel)]="selected">
+              <option *ngFor="let variant of myProduct.variants" [value]="variant.price">{{variant.size}}</option>
+           </select>
+          </form>
+      </div>
 
-      </form>
       <p class="price"> {{selected}} €</p>
       <button type="button" class="add-basket-button" (click)="addToCart()">Ajouter au panier</button>
       <div><b [ngStyle]="{ color: myProduct.favorite > 0 ? 'green' : 'red' }">{{myProduct.favorite}} <svg
